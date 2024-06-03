@@ -26,8 +26,10 @@ func main() {
 	// CodeGeneratorRequestをCodeGeneratorRequest.jsonにして吐き出す.
 	opt.Run(func(plugin *protogen.Plugin) error {
 		// セットされたパラメータをログ出力で確認.
-		log.Print(*param1)
-		log.Print(*param2)
+		// 行末コメントは, 以下コマンド実行時の標準エラー出力.
+		// protoc --myplugin_out=gen --myplugin_opt=param1=foo1,param2=foo2,module=github.com/sayshu-7s/protoc-gen-myplugin/gen proto/example1.proto
+		log.Print(*param1) // foo1
+		log.Print(*param2) // foo2
 
 		// CodeGeneratorRequest.jsonの生成.
 		// CodeGeneratorRequestをJSONとして表現し, ファイルに出力する.
